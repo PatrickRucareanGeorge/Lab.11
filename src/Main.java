@@ -3,50 +3,60 @@ import java.util.List;
 
 public class Main {
 
-    // Referință către strategia de export curentă
+    // Referințe către interfețele de Strategy
     private ExportStrategy exportStrategy;
+    private ImportStrategy importStrategy; // <-- Asigură-te că ai linia asta!
 
-    // Metodă care ne permite să schimbăm strategia la rulare (Runtime)
+    // Metodele de tip Setter pentru a schimba strategiile din mers
     public void setExportStrategy(ExportStrategy exportStrategy) {
         this.exportStrategy = exportStrategy;
     }
 
-    // Metodă care execută strategia selectată
+    public void setImportStrategy(ImportStrategy importStrategy) { // <-- Și metoda asta!
+        this.importStrategy = importStrategy;
+    }
+
+    // Metoda care execută strategia de Export
     public void executaExport(List<Student> studenti) {
         if (exportStrategy != null) {
             exportStrategy.exportStudents(studenti);
-        } else {
-            System.out.println("Eroare: Nu a fost selectată nicio strategie de export!");
         }
     }
 
-    static void main() {
-        // Lista de studenți extrasă exact din cerința ta de laborator
+    // Metoda care execută strategia de Import
+    public void executaImport() {
+        if (importStrategy != null) {
+            List<Student> studentiCititi = importStrategy.importStudents();
+            System.out.println("\n--- STUDENȚI IMPORTAȚI DIN FIȘIER TEXT (Subpunctul D) ---");
+            for (Student s : studentiCititi) {
+                System.out.println(s);
+            }
+        } else {
+            System.out.println("Eroare: Nu a fost selectată nicio strategie de import!");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Lista inițială
         List<Student> studenti = Arrays.asList(
                 new Student(1025, "Andrei", "Popa", "ISM14/2", 8.70),
-                new Student(1024, "Ioan", "Mihalcea", "ISM14/1", 10.0),
-                new Student(1026, "Anamaria", "Prodan", "TI131/1", 8.90),
-                new Student(1029, "Bianca", "Popescu", "TI131/1", 10.0),
-                new Student(1029, "Maria", "Pana", "TI131/2", 4.10),
-                new Student(1029, "Gabriela", "Mohanu", "TI131/2", 7.33),
-                new Student(1029, "Marius", "Nasta", "TI131/2", 3.20),
-                new Student(1029, "Marius", "Nasta", "TI131/1", 5.12),
-                new Student(1029, "Andrei", "Dobrescu", "TI131/2", 2.22)
+                new Student(1024, "Ioan", "Mihalcea", "ISM14/1", 10.0)
         );
 
         Main aplicatie = new Main();
 
-        // A
-        /*aplicatie.setExportStrategy(new StudentiInConsola());*/
+        // Subpunctul A
+        // aplicatie.setExportStrategy(new StudentiInConsola());
 
+        // Subpunctul B
+        // aplicatie.setExportStrategy(new StudentiInFisierText());
 
-        //B
-        /*aplicatie.setExportStrategy(new StudentiInFIsierTxt());*/
+        // Subpunctul C
+        // aplicatie.setExportStrategy(new StudentiInFisierXlsx());
+        // aplicatie.executaExport(studenti);
 
-        //C
-        aplicatie.setExportStrategy(new StudentiInFisierXlsx());
-
-        aplicatie.executaExport(studenti);
-
+        // Subpunctul D: Citire din Fișier Text
+        // aplicatie.setImportStrategy(new StudentiDinFisierText());
+        // aplicatie.executaImport();
     }
 }
