@@ -1,13 +1,47 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Arrays;
+import java.util.List;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+
+    // Referință către strategia de export curentă
+    private ExportStrategy exportStrategy;
+
+    // Metodă care ne permite să schimbăm strategia la rulare (Runtime)
+    public void setExportStrategy(ExportStrategy exportStrategy) {
+        this.exportStrategy = exportStrategy;
+    }
+
+    // Metodă care execută strategia selectată
+    public void executaExport(List<Student> studenti) {
+        if (exportStrategy != null) {
+            exportStrategy.exportStudents(studenti);
+        } else {
+            System.out.println("Eroare: Nu a fost selectată nicio strategie de export!");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Lista de studenți extrasă exact din cerința ta de laborator
+        List<Student> studenti = Arrays.asList(
+                new Student(1025, "Andrei", "Popa", "ISM14/2", 8.70),
+                new Student(1024, "Ioan", "Mihalcea", "ISM14/1", 10.0),
+                new Student(1026, "Anamaria", "Prodan", "TI131/1", 8.90),
+                new Student(1029, "Bianca", "Popescu", "TI131/1", 10.0),
+                new Student(1029, "Maria", "Pana", "TI131/2", 4.10),
+                new Student(1029, "Gabriela", "Mohanu", "TI131/2", 7.33),
+                new Student(1029, "Marius", "Nasta", "TI131/2", 3.20),
+                new Student(1029, "Marius", "Nasta", "TI131/1", 5.12),
+                new Student(1029, "Andrei", "Dobrescu", "TI131/2", 2.22)
+        );
+
+        Main aplicatie = new Main();
+
+        // Setați strategia curentă la "StudentiInConsola"
+        aplicatie.setExportStrategy(new StudentiInConsola());
+
+        // Executați exportul (va apela metoda din clasa StudentiInConsola)
+        aplicatie.executaExport(studenti);
+
+        // Aici vom apela strategiile după ce le implementăm
     }
 }
