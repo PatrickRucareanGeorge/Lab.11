@@ -37,11 +37,16 @@ public class Main {
         Main aplicatie = new Main();
 
         // A
-        /*aplicatie.setExportStrategy(new StudentiInConsola());
-        aplicatie.executaExport(studenti);*/
+        /*aplicatie.setExportStrategy(new StudentiInConsola());*/
+
 
         //B
-        aplicatie.setExportStrategy(new StudentiInFIsierTxt());
+        /*aplicatie.setExportStrategy(new StudentiInFIsierTxt());*/
+
+        //C
+        aplicatie.setExportStrategy(new StudentiInFisierXlsx());
+
         aplicatie.executaExport(studenti);
+
     }
 }
