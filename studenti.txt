@@ -1,0 +1,13 @@
+=======================================================
+       LISTA DE STUDENȚI (EXPORT FIȘIER TEXT)        
+=======================================================
+Student{id=1025, nume='Popa', prenume='Andrei', grupa='ISM14/2', medie=8.7}
+Student{id=1024, nume='Mihalcea', prenume='Ioan', grupa='ISM14/1', medie=10.0}
+Student{id=1026, nume='Prodan', prenume='Anamaria', grupa='TI131/1', medie=8.9}
+Student{id=1029, nume='Popescu', prenume='Bianca', grupa='TI131/1', medie=10.0}
+Student{id=1029, nume='Pana', prenume='Maria', grupa='TI131/2', medie=4.1}
+Student{id=1029, nume='Mohanu', prenume='Gabriela', grupa='TI131/2', medie=7.33}
+Student{id=1029, nume='Nasta', prenume='Marius', grupa='TI131/2', medie=3.2}
+Student{id=1029, nume='Nasta', prenume='Marius', grupa='TI131/1', medie=5.12}
+Student{id=1029, nume='Dobrescu', prenume='Andrei', grupa='TI131/2', medie=2.22}
+=======================================================

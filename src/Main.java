@@ -20,7 +20,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    static void main() {
         // Lista de studenți extrasă exact din cerința ta de laborator
         List<Student> studenti = Arrays.asList(
                 new Student(1025, "Andrei", "Popa", "ISM14/2", 8.70),
@@ -36,12 +36,12 @@ public class Main {
 
         Main aplicatie = new Main();
 
-        // Setați strategia curentă la "StudentiInConsola"
-        aplicatie.setExportStrategy(new StudentiInConsola());
+        // A
+        /*aplicatie.setExportStrategy(new StudentiInConsola());
+        aplicatie.executaExport(studenti);*/
 
-        // Executați exportul (va apela metoda din clasa StudentiInConsola)
+        //B
+        aplicatie.setExportStrategy(new StudentiInFIsierTxt());
         aplicatie.executaExport(studenti);
-
-        // Aici vom apela strategiile după ce le implementăm
     }
 }
