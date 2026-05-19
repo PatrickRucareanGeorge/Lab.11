@@ -24,13 +24,17 @@ public class Main {
     }
 
     // Metoda care execută strategia de Import
+    // Metoda generală care execută strategia de Import curentă
     public void executaImport() {
         if (importStrategy != null) {
             List<Student> studentiCititi = importStrategy.importStudents();
-            System.out.println("\n--- STUDENȚI IMPORTAȚI DIN FIȘIER TEXT (Subpunctul D) ---");
+
+            // Am scos textul fix cu "Subpunctul D" ca să nu se mai amestece la rulare!
+            System.out.println("\n--- LISTA DE STUDENȚI RECONSTRUITĂ ÎN MEMORIE ---");
             for (Student s : studentiCititi) {
                 System.out.println(s);
             }
+            System.out.println("------------------------------------------------");
         } else {
             System.out.println("Eroare: Nu a fost selectată nicio strategie de import!");
         }
@@ -55,8 +59,11 @@ public class Main {
         // aplicatie.setExportStrategy(new StudentiInFisierXlsx());
         // aplicatie.executaExport(studenti);
 
-        // Subpunctul D: Citire din Fișier Text
+        // Subpunctul D:
         // aplicatie.setImportStrategy(new StudentiDinFisierText());
-        // aplicatie.executaImport();
+
+        // Subpunctul E:
+        aplicatie.setImportStrategy(new StudentiDinFisierXlsx());
+        aplicatie.executaImport();
     }
 }
