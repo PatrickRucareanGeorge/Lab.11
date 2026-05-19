@@ -9,7 +9,6 @@ public class StudentiInFIsierTxt implements ExportStrategy {
     public void exportStudents(List<Student> studenti) {
         String numeFisier = "studenti.txt";
 
-        // Folosim try-with-resources pentru a închide automat fișierul după scriere
         try (FileWriter fileWriter = new FileWriter(numeFisier);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
 

@@ -7,16 +7,16 @@ public class StudentiInFisierXlsx implements ExportStrategy {
 
     @Override
     public void exportStudents(List<Student> studenti) {
-        // Folosim extensia .csv sau .xlsx formatat prin delimitatori
+
         String numeFisier = "studenti.csv";
 
         try (FileWriter fileWriter = new FileWriter(numeFisier);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
-            // Scrieți capul de tabel (numele coloanelor). Folosim virgulă ca separator.
+
             printWriter.println("ID,Nume,Prenume,Grupa,Medie");
 
-            // Parcurgem lista și scriem datele fiecărui student pe câte o linie
+
             for (Student s : studenti) {
                 printWriter.println(
                         s.getId() + "," +

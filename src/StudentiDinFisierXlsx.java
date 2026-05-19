@@ -9,28 +9,28 @@ public class StudentiDinFisierXlsx implements ImportStrategy {
     @Override
     public List<Student> importStudents() {
         List<Student> studentiImportati = new ArrayList<>();
-        String numeFisier = "studenti.csv"; // Citim fișierul tabelar salvat anterior
+        String numeFisier = "studenti.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(numeFisier))) {
             String linie;
             boolean estePrimaLinie = true;
 
             while ((linie = br.readLine()) != null) {
-                // Sărim peste prima linie care conține textul: ID,Nume,Prenume,Grupa,Medie
+
                 if (estePrimaLinie) {
                     estePrimaLinie = false;
                     continue;
                 }
 
-                // Sărim peste liniile goale dacă există
+
                 if (linie.trim().isEmpty()) {
                     continue;
                 }
 
-                // Împărțim linia în funcție de virgulă (separatorul CSV-ului)
+
                 String[] date = linie.split(",");
 
-                // Ne asigurăm că linia are exact cele 5 câmpuri ale studentului
+
                 if (date.length == 5) {
                     int id = Integer.parseInt(date[0].trim());
                     String nume = date[1].trim();
@@ -38,7 +38,7 @@ public class StudentiDinFisierXlsx implements ImportStrategy {
                     String grupa = date[3].trim();
                     double medie = Double.parseDouble(date[4].trim());
 
-                    // Reconstruim obiectul și îl adăugăm în listă
+
                     studentiImportati.add(new Student(id, prenume, nume, grupa, medie));
                 }
             }
